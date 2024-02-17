@@ -9,7 +9,7 @@ import androidx.room.TypeConverters
 @Database(entities=[DueEntity::class], version=1)
 @TypeConverters(Converters::class)
 abstract class DueDatabase : RoomDatabase() {
-    abstract fun motivationDao(): DueEntityDao
+    abstract fun DueEntityDao(): DueEntityDao
     companion object {
         fun getDatabase(applicationContext: Context): DueDatabase {
             return Room.databaseBuilder(

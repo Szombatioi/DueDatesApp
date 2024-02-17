@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">DueDates</string>
+    <string name="delete_icon">Delete Icon</string>
+    <string name="add_new_task">Add new task</string>
+    <string name="className">Class</string>
 </resources>
