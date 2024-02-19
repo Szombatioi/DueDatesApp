@@ -22,6 +22,7 @@ class MainActivity : AppCompatActivity(), ElemAdapter.ElemClickListener {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+
         binding.fab.setOnClickListener{
             startActivity(Intent(this, AddDate::class.java))
         }
@@ -50,6 +51,12 @@ class MainActivity : AppCompatActivity(), ElemAdapter.ElemClickListener {
     override fun onItemChanged(item: DueEntity) {
         thread{
             database.DueEntityDao().update(item)
+        }
+    }
+
+    override fun onItemDeleted(item: DueEntity) {
+        thread{
+            database.DueEntityDao().delete(item)
         }
     }
 }

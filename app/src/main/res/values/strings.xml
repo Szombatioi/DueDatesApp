@@ -3,4 +3,6 @@
     <string name="delete_icon">Delete Icon</string>
     <string name="add_new_task">Add new task</string>
     <string name="className">Class</string>
+    <string name="description">Description</string>
+    <string name="e_g_2024_01_01">e.g. 2024.1.11</string>
 </resources>

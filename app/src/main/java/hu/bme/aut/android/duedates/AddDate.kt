@@ -1,12 +1,16 @@
 package hu.bme.aut.android.duedates
 
 import android.content.Intent
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
+import androidx.annotation.RequiresApi
 import androidx.room.Database
 import hu.bme.aut.android.duedates.database.DueDatabase
 import hu.bme.aut.android.duedates.database.DueEntity
 import hu.bme.aut.android.duedates.databinding.ActivityAddDateBinding
+import java.time.LocalDate
 import java.util.Date
 import kotlin.concurrent.thread
 
@@ -21,14 +25,18 @@ class AddDate : AppCompatActivity() {
         binding = ActivityAddDateBinding.inflate(layoutInflater)
         database = DueDatabase.getDatabase(applicationContext)
 
-        binding.addBtn.setOnClickListener {
-            if(!valid()) return@setOnClickListener
+        
 
+        binding.addBtn.setOnClickListener {
+            Log.i("Button", "Button pressed")
+            if(!valid()) return@setOnClickListener
+            Log.i("Button", "Button passed")
             thread{
+                val dateText = binding.dueDateText.text.toString().split('.')
                 database.DueEntityDao().save(DueEntity(
                     className = binding.classNameText.text.toString(),
                     subjectName = binding.classNameText.text.toString(),
-                    dueDate = Date()
+                    dueDate = Date(dateText[0].toInt(), dateText[1].toInt(), dateText[2].toInt())
                 ))
             }
 

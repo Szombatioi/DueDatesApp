@@ -27,6 +27,10 @@ class ElemAdapter(private val listener: ElemClickListener) :
             items.removeAt(position)
             listener.onItemChanged(item) //Todo: Működik?
         }
+
+        holder.binding.deleteBtn.setOnClickListener {
+            listener.onItemDeleted(item)
+        }
     }
 
     fun addItem(item: DueEntity) {
@@ -44,6 +48,7 @@ class ElemAdapter(private val listener: ElemClickListener) :
 
     interface ElemClickListener {
         fun onItemChanged(item: DueEntity)
+        fun onItemDeleted(item: DueEntity)
     }
 
     inner class ElemViewHolder(val binding: ListItemBinding) : RecyclerView.ViewHolder(binding.root)
